@@ -11,7 +11,7 @@ interface GetManagerRestautantResponse {
 
 export async function getManagerRestaurant() {
   const response = await api.get<GetManagerRestautantResponse>(
-    '/manager-restaurant',
+    '/managed-restaurant',
   )
 
   return response.data

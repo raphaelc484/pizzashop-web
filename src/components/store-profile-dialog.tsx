@@ -5,8 +5,8 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 
 import {
-  getManagerRestaurant,
-  GetManagerRestautantResponse,
+  getManagedRestaurant,
+  GetManagedRestautantResponse,
 } from '@/api/get-managed-restaurant'
 import { updateProfile } from '@/api/update-profile'
 
@@ -35,7 +35,7 @@ export function StoreProfileDialog() {
 
   const { data: manageRestaurant } = useQuery({
     queryKey: ['managed-restaurant'],
-    queryFn: getManagerRestaurant,
+    queryFn: getManagedRestaurant,
     staleTime: Infinity,
   })
 
@@ -55,12 +55,12 @@ export function StoreProfileDialog() {
     name,
     description,
   }: StoreProfileSchema) {
-    const cached = queryClient.getQueryData<GetManagerRestautantResponse>([
+    const cached = queryClient.getQueryData<GetManagedRestautantResponse>([
       'managed-restaurant',
     ])
 
     if (cached) {
-      queryClient.setQueryData<GetManagerRestautantResponse>(
+      queryClient.setQueryData<GetManagedRestautantResponse>(
         ['managed-restaurant'],
         {
           ...cached,

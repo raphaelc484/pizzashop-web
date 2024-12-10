@@ -14,6 +14,7 @@ test('sign up successfully', async ({ page }) => {
 
   expect(toast).toBeVisible()
 })
+
 test('sign up with error', async ({ page }) => {
   await page.goto('/sign-up', { waitUntil: 'networkidle' })
 
